@@ -1,87 +1,63 @@
-<html>
-<script src="./jquery-1.9.1.min.js"></script>
-<body >
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=1">
+
+    <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+	<META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+    <meta name="theme-color" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+
+    <title>Cuanto hace</title>
+</head>
 <style>
-.classreloj { color:#ffffff;}
-body { background-color:#000000;}
-.D1 { font-size:30px;}
-.D2 { font-size:20px;}
+body{
+    background-color:black;
+}
+
+.dd{
+  margin-left:10px;
+ color:white;
+ font-size:24px;
+}
+
+
 </style>
+
+<body>
+<img  width=32 src=./anillo.png> <span class=dd id=anillo></span><br>
+<img  width=30  src=./bb.png> <span class=dd id=bb></span>
+
+
 <script>
-//var futuro = new Date(2012,1,9,0,0,0,0); // 09/02/20011 mes es vasado en 0 
-function animcorazon()
-{
-
-}
-
-function cuentadelante(desde,disp,icono)
-{
-var futuro = desde;
-var milisegensemana = 6048e5;
-var milisegendia = 864e5;
-var milsegenhora = 36e5;
-
-var reloj = document.getElementById(disp);
-
-var hoy = new Date();
-
-var dif = hoy - desde;
-var difvalor  = dif.valueOf();
-
-
-var semanas = parseInt( ( difvalor / milisegensemana) );
-//var meses = parseInt(semanas / 4) 
-
-var meses = parseInt( difvalor / 262975e4);
-
-var dias = parseInt( (difvalor % milisegensemana) /milisegendia ) ;
-var horas = parseInt( ( (difvalor % milisegensemana) % milisegendia ) /milsegenhora) ; 
-var minutos = parseInt ( ( ((difvalor % milisegensemana) % milisegendia ) % milsegenhora ) /  6e4 ) ;
-var segundos = parseInt( ( ( ((difvalor % milisegensemana) % milisegendia ) % milsegenhora ) %  6e4 ) / 1000 );
-
-var minutos = (minutos < 10 )?'0'+minutos : minutos;
-
-var segundos = (segundos < 10 )?'0'+segundos  : segundos ;
-
-var anos = Math.round((meses / 12) * 10 ) / 10;
-
-
-
-reloj.innerHTML = "  <img id=corazon border=0 height=24 width=24 src=\"" + icono + "\"/>&nbsp;&nbsp;&nbsp;"
-+ "<span class=D1>" +anos+ "<span class=D2>a&ntilde;os</span></span>&nbsp;&nbsp;&nbsp; ="
-+ "&nbsp;&nbsp;&nbsp;<span class=D1>" + meses + "<span class=D2>mes</span></span>&nbsp;&nbsp;&nbsp;= "
- + "&nbsp;&nbsp;&nbsp;<span class=D1>" + semanas + "<span class=D2>sem</span></span>"
- + "&nbsp;&nbsp;&nbsp;<span class=D1>" + dias + "<span class=D2>d</span></span>" 
- + "&nbsp;&nbsp;&nbsp;<span class=D1>" + horas + "<span class=D2>h</span></span>" 
- + "&nbsp;&nbsp;&nbsp;<span class=D1>" + minutos + "<span class=D2>m</span></span>" 
- + "&nbsp;&nbsp;&nbsp;<span class=D1>" + segundos+ "<span class=D2>seg</span></span>" 
-;
-
-
-setTimeout("cuentadelante(new Date(" + futuro.getFullYear() + "," + futuro.getMonth() + "," + futuro.getDate()  + "," + futuro.getHours() + "," + futuro.getMinutes() + ",0,0),'" + disp + "','" + icono + "');",1000);
-
-}
-</script>
-
-
-
-
- <br>
-<div class="classreloj" id="relojvida">
-</div>
-<br>
-<div class="classreloj" id="relojcasamiento">
-</div>
-<script>
-
-ver = 3;
-
- try { ver = window.location.href.split('?')[1].split('&')[0].split('=')[1] ; } catch(s) { ver = 3 ; }
-
-
- if(ver == 3 || ver == 1 ) { cuentadelante(new Date(2012,0,27,0,0,0,0),'relojvida','./bb.png'); }
-  if(ver == 3 || ver == 2 ) {cuentadelante(new Date(2013,8,13,0,0,0,0),'relojcasamiento','./anillo.png'); }
  
+       
+         var anillod = new Date(2013,8,13); 
+         var bb = new Date(2012,0,27);
+         
+         var anillodias = new Date( ( Date.now() - anillod.getTime() ));
+         var bbdias = new Date(( Date.now() - bb.getTime() ));
+         
+       document.getElementById('anillo').innerHTML = ( anillodias.getFullYear() - 1970) 
+            + '<small> años </small>' 
+            + anillodias.getMonth()
+            + '<small> meses </small>'
+            + anillodias.getDate()
+            + '<small> días </small>';
+       
+       
+        document.getElementById('bb').innerHTML =( bbdias.getFullYear() - 1970) 
+            + '<small> años </small>' 
+            + bbdias.getMonth()
+            + '<small> meses </small>'
+            + bbdias.getDate()
+            + '<small> días </small>';
+ 
+    
 </script>
 </body>
 </html>
