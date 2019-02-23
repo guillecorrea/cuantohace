@@ -1,0 +1,55 @@
+
+<style>
+
+
+.dd{
+  margin-left:10px;
+ color:white;
+ font-size:24px;
+}
+
+
+</style>
+<div style="background-color:#404040;padding:5px;">
+
+<img  width=42 src=/blog/posts/img/couple.png title="24/01/2009"> <span class=dd id=pareja></span><br>
+<img  width=42 src=/blog/posts/img/anillo.png title="13/0872013" > <span class=dd id=anillo></span><br>
+<img  width=40  src=/blog/posts/img/boy.png title="27/01/2017"> <span class=dd id=bb></span>
+</div>
+
+<script>
+
+// para usar en post
+
+         var parejad = new Date(2009,0,24);
+         var anillod = new Date(2013,8,13);
+         var bb = new Date(2012,0,27);
+
+         var parejadias = new Date(( Date.now() - parejad.getTime() ));
+         var anillodias = new Date( ( Date.now() - anillod.getTime() ));
+         var bbdias = new Date(( Date.now() - bb.getTime() ));
+
+       document.getElementById('pareja').innerHTML = ( parejadias.getFullYear() - 1970)
+            + '<small> años </small>'
+            + parejadias.getMonth()
+            + '<small> meses </small>'
+            + (parejadias.getDate() -1 )
+            + '<small> días </small>';
+
+       document.getElementById('anillo').innerHTML = ( anillodias.getFullYear() - 1970)
+            + '<small> años </small>'
+            + anillodias.getMonth()
+            + '<small> meses </small>'
+            + ( anillodias.getDate() -1 )
+            + '<small> días </small>';
+
+
+        document.getElementById('bb').innerHTML =( bbdias.getFullYear() - 1970)
+            + '<small> años </small>'
+            + bbdias.getMonth()
+            + '<small> meses </small>'
+            + (bbdias.getDate() - 1)
+            + '<small> días </small>';
+
+
+</script>
